@@ -2,235 +2,193 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>AXIOMERA :: RAPORT KOREKCYJNY</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXIOMERA /// RAPORT KOREKCYJNY</title>
 
 <style>
-/* ===== RESET ===== */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* === RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === GLOBAL === */
 body {
   background: #000;
-  color: #4fc3ff;
+  color: #6fe8ff;
   font-family: "Courier New", monospace;
-  line-height: 1.6;
+  letter-spacing: 0.08em;
+  padding: 40px;
   overflow-x: hidden;
 }
 
-/* ===== GLITCH KEYFRAMES ===== */
-@keyframes glitch {
-  0% { text-shadow: 2px 0 #00f6ff, -2px 0 #0033ff; }
-  20% { text-shadow: -2px 0 #00f6ff, 2px 0 #0033ff; }
-  40% { text-shadow: 2px 0 #0033ff, -2px 0 #00f6ff; }
-  60% { text-shadow: -1px 0 #00f6ff, 1px 0 #0033ff; }
-  80% { text-shadow: 1px 0 #00f6ff, -1px 0 #0033ff; }
-  100% { text-shadow: 0 0 #000; }
+/* === NOISE === */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
 }
 
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.85; }
-  52% { opacity: 0.4; }
-  54% { opacity: 1; }
-}
-
-/* ===== LAYOUT ===== */
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 40px 20px 80px;
-}
-
-/* ===== LOGO ===== */
+/* === LOGO === */
 .logo {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .logo img {
   max-width: 260px;
-  margin: 10px;
+  display: block;
+  margin: 0 auto 20px;
+  filter: drop-shadow(0 0 12px rgba(0,200,255,0.6));
+  animation: logoFlicker 4s infinite;
 }
 
-.logo-symbol {
-  animation: flicker 4s infinite;
+@keyframes logoFlicker {
+  0%, 96%, 100% { opacity: 1; }
+  97% { opacity: 0.6; }
+  98% { opacity: 0.9; }
 }
 
-.logo-text {
+/* === HEADERS === */
+h1, h2 {
+  margin: 30px 0 15px;
+  position: relative;
+}
+
+.glitch {
   animation: glitch 2.5s infinite;
 }
 
-/* ===== HEADERS ===== */
-h1, h2 {
-  margin: 40px 0 15px;
-  animation: glitch 3s infinite;
+@keyframes glitch {
+  0% { text-shadow: 2px 0 cyan; }
+  20% { text-shadow: -2px 0 #0ff; }
+  40% { text-shadow: 2px 2px #0aa; }
+  60% { text-shadow: -1px -1px #0ff; }
+  100% { text-shadow: 0 0 cyan; }
 }
 
-h1 {
-  font-size: 28px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 20px;
-}
-
-/* ===== TERMINAL BLOCKS ===== */
+/* === TERMINAL BLOCK === */
 .block {
-  border-left: 2px solid #4fc3ff;
-  padding-left: 15px;
-  margin-bottom: 30px;
-  animation: flicker 6s infinite;
+  border-left: 2px solid #6fe8ff;
+  padding-left: 20px;
+  margin: 20px 0 40px;
+  animation: pulse 6s infinite;
 }
 
-.separator {
-  margin: 25px 0;
-  color: #1fa2ff;
+@keyframes pulse {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+p, li {
+  margin-bottom: 8px;
+  text-shadow: 0 0 6px rgba(0,200,255,0.4);
+}
+
+/* === LIST === */
+ul {
+  list-style: none;
+  margin-left: 10px;
+}
+
+ul li::before {
+  content: "›› ";
+  color: #0ff;
+}
+
+/* === SEPARATOR === */
+.sep {
+  margin: 30px 0;
   opacity: 0.7;
 }
 
-/* ===== LISTS ===== */
-ul {
-  list-style: none;
-  margin-left: 15px;
-}
-
-li::before {
-  content: ">> ";
-  color: #1fa2ff;
-}
-
-/* ===== FOOTER ===== */
+/* === FOOTER === */
 .footer {
   margin-top: 60px;
   text-align: center;
-  font-size: 12px;
-  opacity: 0.6;
-  animation: flicker 5s infinite;
+  opacity: 0.7;
+  animation: flicker 3s infinite;
 }
 
-/* ===== NOISE OVERLAY ===== */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(255,255,255,0.02),
-    rgba(255,255,255,0.02) 1px,
-    transparent 1px,
-    transparent 2px
-  );
-  mix-blend-mode: overlay;
+@keyframes flicker {
+  0%,100% { opacity: 0.7; }
+  50% { opacity: 0.4; }
 }
 </style>
 </head>
 
 <body>
-<div class="container">
 
-  <!-- LOGO -->
-  <div class="logo">
-    <img src="axiomera-symbol.PNG" class="logo-symbol" alt="AXIOMERA SYMBOL">
-    <br>
-    <img src="axiomera-text.PNG" class="logo-text" alt="AXIOMERA">
-  </div>
-
-  <h1>/// AXIOMERA — RAPORT KOREKCYJNY ///</h1>
-
-  <div class="block">
-    Jednostka nadrzędna: <strong>AXIOMERA</strong><br>
-    Właściciel infrastruktury: <strong>NEXARUM</strong><br>
-    Podsystem wykonawczy: <strong>SENTRAX</strong><br>
-    Zakres analizy: <strong>Zdarzenie anomalne / Strefa C1</strong><br>
-    Znacznik czasu: <strong>03:17:42 – 03:17:44</strong>
-  </div>
-
-  <div class="separator">/// PROTOKÓŁ ANALITYCZNY ⸻ AKTYWNY ///</div>
-
-  <h2>1. STRESZCZENIE ZDARZENIA</h2>
-  <div class="block">
-    W strefie C1 odnotowano nieautoryzowane przejęcie rdzenia kalibracyjnego klasy K-Σ/7.<br>
-    Jednostki SENTRAX wdrożyły protokół supresji poziomu czwartego.<br><br>
-    <strong>Status protokołu:</strong> zakończony częściowym niepowodzeniem.
-  </div>
-
-  <h2>2. STRATY SYSTEMOWE</h2>
-  <div class="block">
-    <ul>
-      <li>Zniszczone platformy egzekucyjne: 3</li>
-      <li>Jednostki supresyjne RZ-X („Rzęch”): 5</li>
-      <li>Luka czasowa: 2,3 sekundy</li>
-      <li>Brak zapisu wizualnego / termicznego / EM</li>
-      <li>Status rdzenia K-Σ/7: <strong>UTRACONY</strong></li>
-    </ul>
-  </div>
-
-  <h2>3. ANALIZA ANOMALII</h2>
-  <div class="block">
-    Brak rejestracji emisji energii kinetycznej.<br>
-    Brak sygnałów zakłócających.<br>
-    Brak wzorców bojowych zgodnych z bazą danych.<br><br>
-    Zdarzenie nie spełnia kryteriów ataku terrorystycznego ani sabotażu korporacyjnego.<br><br>
-    <strong>Klasyfikacja:</strong><br>
-    Anomalia niskiej przewidywalności /// źródło nieznane
-  </div>
-
-  <h2>4. PODMIOT LUDZKI: JAREK [ID ZDEGRADOWANY]</h2>
-  <div class="block">
-    Status przed zdarzeniem:
-    <ul>
-      <li>Zasób roboczy klasy C</li>
-      <li>Dostęp cofnięty</li>
-      <li>CoreCred: zablokowany</li>
-    </ul>
-    <br>
-    Status po zdarzeniu:
-    <ul>
-      <li>Lokalizacja: nieznana</li>
-      <li>Stan biologiczny: niepotwierdzony</li>
-      <li>Wartość predykcyjna: +14,6%</li>
-    </ul>
-  </div>
-
-  <h2>5. REKOMENDACJE SYSTEMOWE</h2>
-  <div class="block">
-    <ul>
-      <li>Zwiększyć nadzór nad strefami C-serii</li>
-      <li>Przeklasyfikować podmioty infrastrukturalne</li>
-      <li>Rozszerzyć modele predykcyjne o zmienną X-Δ</li>
-    </ul>
-  </div>
-
-  <h2>6. UWAGA KOŃCOWA</h2>
-  <div class="block">
-    Modele predykcyjne wykazują rosnącą liczbę zdarzeń<br>
-    bez racjonalnego ciągu przyczynowo-skutkowego.<br><br>
-    <strong>Status:</strong> brak zagrożenia krytycznego.<br>
-    <em>Na tym etapie.</em>
-  </div>
-
-  <div class="separator">/// RAPORT ZAMKNIĘTY ⸻ CIĄGŁOŚĆ ZAPEWNIONA ///</div>
-
-  <div class="footer">
-    AXIOMERA © TOM I — EPILOG<br>
-    SYSTEM ONLINE // PROTOCOL STABLE
-  </div>
-
+<div class="logo">
+  <img src="axiomera-symbol.png" alt="AXIOMERA SYMBOL">
+  <img src="axiomera-text.png" alt="AXIOMERA">
 </div>
 
-<script>
-/* RANDOM GLITCH FLICKER */
-setInterval(() => {
-  const headers = document.querySelectorAll('h1, h2');
-  headers.forEach(h => {
-    if (Math.random() > 0.7) {
-      h.style.opacity = Math.random() * 0.5 + 0.5;
-      setTimeout(() => h.style.opacity = 1, 120);
-    }
-  });
-}, 300);
-</script>
+<h1 class="glitch">/// AXIOMERA — RAPORT KOREKCYJNY ///</h1>
+
+<div class="block">
+  <p>Jednostka nadrzędna: <strong>AXIOMERA</strong></p>
+  <p>Właściciel infrastruktury: <strong>NEXARUM</strong></p>
+  <p>Podsystem wykonawczy: <strong>SENTRAX</strong></p>
+  <p>Zakres analizy: Zdarzenie anomalne / Strefa C1</p>
+  <p>Znacznik czasu: 03:17:42 – 03:17:44</p>
+</div>
+
+<div class="sep">⸻⸻⸻</div>
+
+<h2 class="glitch">/// PROTOKÓŁ ANALITYCZNY — AKTYWNY ///</h2>
+
+<div class="block">
+  <p>W strefie C1 odnotowano nieautoryzowane przejęcie rdzenia kalibracyjnego klasy K-Σ/7.</p>
+  <p>Jednostki SENTRAX wdrożyły protokół supresji poziomu czwartego.</p>
+  <p><strong>Protokół zakończony częściowym niepowodzeniem.</strong></p>
+</div>
+
+<h2 class="glitch">/// STRATY SYSTEMOWE ///</h2>
+
+<div class="block">
+  <ul>
+    <li>Platformy egzekucyjne: 3</li>
+    <li>Jednostki RZ-X (Rzęch): 5</li>
+    <li>Luka czasowa: 2,3 s</li>
+    <li>Brak zapisu wizualnego / termicznego / EM</li>
+    <li>Status rdzenia K-Σ/7: UTRACONY</li>
+  </ul>
+</div>
+
+<h2 class="glitch">/// ANALIZA ANOMALII ///</h2>
+
+<div class="block">
+  <p>Brak emisji energii kinetycznej.</p>
+  <p>Brak wzorców bojowych.</p>
+  <p>Brak korelacji z modelami ludzkimi lub autonomicznymi.</p>
+  <p><strong>Klasyfikacja:</strong> Anomalia niskiej przewidywalności / źródło nieznane</p>
+</div>
+
+<h2 class="glitch">/// PODMIOT: JAREK [ID ZDEGRADOWANY] ///</h2>
+
+<div class="block">
+  <p>Status przed: zasób roboczy klasy C / dostęp cofnięty</p>
+  <p>Status po: lokalizacja nieznana / stan biologiczny niepotwierdzony</p>
+  <p>Wartość predykcyjna: +14,6%</p>
+  <p><em>Jednostka wykazuje korelacje z anomaliami systemowymi.</em></p>
+</div>
+
+<h2 class="glitch">/// UWAGA KOŃCOWA ///</h2>
+
+<div class="block">
+  <p>Modele predykcyjne wykazują wzrost zdarzeń bez ciągu przyczynowo-skutkowego.</p>
+  <p>Nie stanowi to zagrożenia krytycznego.</p>
+  <p><strong>Na tym etapie.</strong></p>
+</div>
+
+<div class="footer">
+  /// RAPORT ZAMKNIĘTY /// <br>
+  AXIOMERA — CIĄGŁOŚĆ ZAPEWNIONA
+</div>
 
 </body>
 </html>
