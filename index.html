@@ -2,179 +2,136 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>AXIOMERA — Raport Korekcyjny</title>
+<title>AXIOMERA // RAPORT KOREKCYJNY</title>
 
 <style>
-    :root {
-        --bg: #000000;
-        --blue: #5ccaff;
-        --blue-dim: #2f6f8a;
-    }
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #4fb3ff;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 15px;
+}
 
-    * {
-        box-sizing: border-box;
-    }
+.wrapper {
+    max-width: 960px;
+    padding: 40px;
+}
 
-    body {
-        margin: 0;
-        padding: 40px 20px;
-        background: var(--bg);
-        color: var(--blue);
-        font-family: "Courier New", Consolas, monospace;
-        line-height: 1.5;
-    }
+img {
+    display: block;
+    max-width: 100%;
+    margin: 30px 0;
+    background: none;
+    border: none;
+}
 
-    .container {
-        max-width: 900px;
-        margin: 0 auto;
-    }
-
-    .logo {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-
-    .logo img {
-        max-width: 320px;
-        display: block;
-        margin: 0 auto 20px auto;
-    }
-
-    .logo-text {
-        max-width: 260px;
-    }
-
-    .header {
-        margin-bottom: 30px;
-        font-size: 20px;
-        letter-spacing: 1px;
-    }
-
-    .section {
-        margin-bottom: 40px;
-    }
-
-    .box {
-        border: 1px solid var(--blue-dim);
-        padding: 20px;
-    }
-
-    .title {
-        margin-bottom: 15px;
-        font-weight: bold;
-    }
-
-    .line {
-        border-bottom: 1px dashed var(--blue-dim);
-        margin: 25px 0;
-    }
-
-    .label {
-        color: var(--blue-dim);
-    }
-
-    footer {
-        margin-top: 60px;
-        color: var(--blue-dim);
-        font-size: 14px;
-    }
+pre {
+    margin: 0;
+    line-height: 1.55;
+    white-space: pre-wrap;
+}
 </style>
 </head>
 
 <body>
-<div class="container">
+<div class="wrapper">
 
-    <div class="logo">
-        <img src="axiomera-symbol.png" alt="AXIOMERA Symbol">
-        <img src="axiomera-text.png" alt="AXIOMERA" class="logo-text">
-    </div>
+<img src="axiomera-symbol.png" alt="AXIOMERA SYMBOL">
+<img src="axiomera-text.png" alt="AXIOMERA">
 
-    <div class="header">
-        /// AXIOMERA — RAPORT KOREKCYJNY ///
-    </div>
+<pre>
+[ SYSTEM // AXIOMERA_CORRECTIVE_REPORT : v1.0 ]
 
-    <div class="section box">
-        <div><span class="label">Jednostka nadrzędna:</span> AXIOMERA</div>
-        <div><span class="label">Właściciel infrastruktury:</span> NEXARUM</div>
-        <div><span class="label">Podsystem wykonawczy:</span> SENTRAX</div>
-        <div><span class="label">Zakres analizy:</span> Zdarzenie anomalne / Strefa C1</div>
-        <div><span class="label">Znacznik czasu:</span> 03:17:42 — 03:17:44</div>
-    </div>
+UNIT_MASTER:        AXIOMERA
+INFRA_OWNER:        NEXARUM
+EXEC_SUBSYSTEM:     SENTRAX
+ANALYSIS_SCOPE:     Zdarzenie anomalne / Strefa C1
+TIME_MARKER:        03:17:42 – 03:17:44
+</pre>
 
-    <div class="line"></div>
+<pre>
+============================================================
+== PROTOKÓŁ ANALITYCZNY // STATUS: AKTYWNY
+============================================================
 
-    <div class="section">
-        <div class="title">== STRESZCZENIE ZDARZENIA ==</div>
-        <div class="box">
-            W strefie C1 odnotowano nieautoryzowane przejęcie rdzenia
-            kalibracyjnego klasy K-Σ/7.<br><br>
+W strefie C1 odnotowano nieautoryzowane przejęcie rdzenia
+kalibracyjnego klasy K-Σ/7.
 
-            Jednostki SENTRAX wdrożyły protokół supresji poziomu czwartego.<br>
-            <strong>Protokół zakończony częściowym niepowodzeniem.</strong>
-        </div>
-    </div>
+Jednostki SENTRAX wdrożyły protokół supresji poziomu czwartego.
 
-    <div class="section">
-        <div class="title">== STRATY SYSTEMOWE ==</div>
-        <div class="box">
-            Zniszczone jednostki SENTRAX:<br>
-            — platformy egzekucyjne: 3<br>
-            — jednostki supresyjne RZ-X: 5<br><br>
+Protokół zakończony częściowym niepowodzeniem.
+</pre>
 
-            Utrata integralności danych:<br>
-            — luka czasowa: 2,3 sekundy<br>
-            — brak zapisu wizualnego, termicznego i elektromagnetycznego<br><br>
+<pre>
+============================================================
+== STRATY SYSTEMOWE
+============================================================
 
-            Status rdzenia K-Σ/7: <strong>UTRACONY</strong>
-        </div>
-    </div>
+Zniszczone jednostki SENTRAX:
+- platformy egzekucyjne: 3
+- jednostki supresyjne typu RZ-X: 5
 
-    <div class="section">
-        <div class="title">== ANALIZA ANOMALII ==</div>
-        <div class="box">
-            W czasie luki nie zarejestrowano emisji energii kinetycznej,
-            sygnałów zakłócających ani wzorców bojowych zgodnych z
-            modelami ludzkimi lub autonomicznymi.<br><br>
+Utrata integralności danych:
+- luka czasowa: 2,3 sekundy
+- brak zapisu wizualnego
+- brak zapisu termicznego
+- brak zapisu elektromagnetycznego
 
-            Zdarzenie nie spełnia kryteriów ataku terrorystycznego,
-            sabotażu korporacyjnego ani buntu zorganizowanego.<br><br>
+STATUS RDZENIA K-Σ/7: UTRACONY
+</pre>
 
-            Klasyfikacja:<br>
-            <strong>Anomalia niskiej przewidywalności / źródło nieznane</strong>
-        </div>
-    </div>
+<pre>
+============================================================
+== ANALIZA ANOMALII
+============================================================
 
-    <div class="section">
-        <div class="title">== PODMIOT LUDZKI: JAREK [ID ZDEGRADOWANY] ==</div>
-        <div class="box">
-            Status przed zdarzeniem:<br>
-            — zasób roboczy klasy C<br>
-            — dostęp cofnięty<br>
-            — CoreCred: zablokowany<br><br>
+Brak emisji energii kinetycznej.
+Brak sygnałów zakłócających.
+Brak wzorców bojowych zgodnych z modelami
+ludzkimi lub autonomicznymi.
 
-            Status po zdarzeniu:<br>
-            — lokalizacja: nieznana<br>
-            — stan biologiczny: niepotwierdzony<br>
-            — wartość predykcyjna: wzrost o 14,6%
-        </div>
-    </div>
+KLASYFIKACJA:
+ANOMALIA NISKIEJ PRZEWIDYWALNOŚCI
+ŹRÓDŁO: NIEZNANE
+</pre>
 
-    <div class="section">
-        <div class="title">== UWAGA KOŃCOWA ==</div>
-        <div class="box">
-            Modele predykcyjne wykazują rosnącą liczbę zdarzeń,
-            których nie można powiązać z racjonalnym ciągiem
-            przyczynowo-skutkowym.<br><br>
+<pre>
+============================================================
+== PODMIOT LUDZKI: JAREK [ID ZDEGRADOWANY]
+============================================================
 
-            Nie stanowi to zagrożenia krytycznego.<br>
-            <strong>Na tym etapie.</strong>
-        </div>
-    </div>
+STATUS PRZED ZDARZENIEM:
+- zasób roboczy klasy C
+- dostęp cofnięty
+- CoreCred: zablokowany
 
-    <footer>
-        Raport zamknięty.<br>
-        AXIOMERA — ciągłość zapewniona.
-    </footer>
+STATUS PO ZDARZENIU:
+- lokalizacja: nieznana
+- stan biologiczny: niepotwierdzony
+- wartość predykcyjna: +14,6%
+
+ADNOTACJA:
+Jednostka wykazuje powtarzalne korelacje
+z anomaliami systemowymi.
+</pre>
+
+<pre>
+============================================================
+== UWAGA KOŃCOWA
+============================================================
+
+Modele predykcyjne wykazują wzrost zdarzeń
+niemożliwych do powiązania z racjonalnym
+ciągiem przyczynowo-skutkowym.
+
+ZAGROŻENIE KRYTYCZNE: NIE
+STATUS: MONITOROWANY
+
+Raport zamknięty.
+AXIOMERA — ciągłość zapewniona.
+</pre>
 
 </div>
 </body>
