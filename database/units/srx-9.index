@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>SRX-9 :: WIDOW</title>
+
+<style>
+body {
+  background:#000;
+  color:#3d7cff;
+  font-family:"Courier New", monospace;
+  margin:0;
+  padding:40px;
+}
+
+a {
+  color:#3d7cff;
+  text-decoration:none;
+}
+
+a:hover {
+  text-decoration:underline;
+}
+
+.header {
+  border-bottom:1px solid #3d7cff;
+  padding-bottom:14px;
+  margin-bottom:30px;
+}
+
+.section {
+  margin-bottom:26px;
+}
+
+.label {
+  color:#6fa3ff;
+}
+
+.redacted {
+  color:#14284d;
+}
+
+.alert {
+  color:#7fb0ff;
+  animation:flicker 1.6s infinite;
+}
+
+@keyframes flicker {
+  0% {opacity:1}
+  40% {opacity:.7}
+  50% {opacity:.3}
+  60% {opacity:.85}
+  100% {opacity:1}
+}
+
+.footer {
+  border-top:1px solid #3d7cff;
+  padding-top:12px;
+  margin-top:40px;
+  font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<pre>
+[ SENTRAX UNIT DATABASE ]
+UNIT_ID: SRX-9
+DESIGNATION: "WIDOW"
+CLASS: PACIFICATION / STRIKE
+ACCESS LEVEL: TIER-3
+</pre>
+</div>
+
+<div class="section">
+<span class="label">STATUS:</span> OPERATIONAL<br>
+<span class="label">DEPLOYMENT:</span> SELECTIVE / URBAN<br>
+<span class="label">CLEARANCE:</span> COMMAND AUTHORIZATION REQUIRED
+</div>
+
+<div class="section">
+<span class="label">PRIMARY ROLE:</span><br>
+– area denial<br>
+– riot suppression<br>
+– high-risk target neutralization
+</div>
+
+<div class="section">
+<span class="label">ARMAMENT SYSTEMS:</span><br>
+– kinetic suppression modules<br>
+– EMP grenade payloads<br>
+– biometric DNA marker injectors
+</div>
+
+<div class="section">
+<span class="label">TARGETING:</span><br>
+– SENTRAX GRID (full sync)<br>
+– BLACK TRACE (active)<br>
+– predictive movement modeling
+</div>
+
+<div class="section">
+<span class="label">AI CONTROL:</span><br>
+– semi-autonomous combat logic<br>
+– escalation protocol: <span class="redacted">REDACTED</span><br>
+– civilian tolerance threshold: <span class="redacted">REDACTED</span>
+</div>
+
+<div class="section">
+<span class="label">KNOWN INCIDENTS:</span><br>
+– ██-██-██ / SECTOR C2<br>
+– ██-██-██ / ZONE ████<br>
+<span class="redacted">LOG FILES DAMAGED</span>
+</div>
+
+<div class="section">
+<span class="label">STREET DESIGNATIONS:</span><br>
+– "Wdowy"<br>
+– "Czarne Anioły"
+</div>
+
+<div class="section alert">
+<span class="label">SYSTEM NOTICE:</span><br>
+MULTIPLE DATA BLOCKS UNAVAILABLE<br>
+FILE INTEGRITY: 62%
+</div>
+
+<div class="section alert">
+<span class="label">WARNING:</span><br>
+FURTHER ACCESS REQUIRES TIER-4 CLEARANCE
+</div>
+
+<div class="footer">
+<a href="../../index.html">← RETURN TO DATABASE TERMINAL</a><br><br>
+AXIOMERA INTERNAL ARCHIVE // UNAUTHORIZED ACCESS PUNISHABLE
+</div>
+
+</body>
+</html>
