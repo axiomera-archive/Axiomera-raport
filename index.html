@@ -2,80 +2,194 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>AXIOMERA :: ARCHIVE ACCESS</title>
+<title>AXIOMERA :: TERMINAL ACCESS</title>
+
 <style>
     body {
-        background-color: #0b0e0c;
-        color: #c7f5d9;
+        margin: 0;
+        padding: 30px;
+        background: #070a08;
+        color: #8fffe2;
         font-family: "Courier New", monospace;
-        padding: 40px;
-        line-height: 1.6;
+        overflow-x: hidden;
     }
+
     .terminal {
         max-width: 900px;
         margin: auto;
-        border: 1px solid #1f3f2a;
-        padding: 30px;
-        box-shadow: 0 0 20px rgba(0,255,120,0.1);
+        position: relative;
     }
-    .header {
-        color: #7CFFB2;
+
+    h1, h2 {
+        color: #7fffd4;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+
+    .glitch {
+        position: relative;
+        color: #7fffd4;
+        animation: flicker 3s infinite;
+    }
+
+    .glitch::before,
+    .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0.8;
+    }
+
+    .glitch::before {
+        color: #ff4d4d;
+        transform: translate(-2px, 0);
+        animation: glitch 2s infinite;
+    }
+
+    .glitch::after {
+        color: #4dffb8;
+        transform: translate(2px, 0);
+        animation: glitch 1.5s infinite;
+    }
+
+    @keyframes glitch {
+        0% { clip-path: inset(0 0 90% 0); }
+        50% { clip-path: inset(10% 0 40% 0); }
+        100% { clip-path: inset(80% 0 0 0); }
+    }
+
+    @keyframes flicker {
+        0%, 100% { opacity: 1; }
+        45% { opacity: 0.6; }
+        50% { opacity: 0.2; }
+        55% { opacity: 0.7; }
+    }
+
+    .meta, .log {
+        color: #6fbfa6;
+        font-size: 0.9em;
         margin-bottom: 20px;
     }
-    .warning {
-        color: #ff4d4d;
+
+    .log {
+        background: rgba(20, 40, 30, 0.35);
+        padding: 15px;
+        border-left: 2px solid #3fa98c;
+        margin: 25px 0;
     }
-    .muted {
-        color: #6fa88a;
+
+    .warning {
+        color: #ff5f5f;
+        font-weight: bold;
+        animation: flicker 1.5s infinite;
+    }
+
+    .cursor::after {
+        content: "_";
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+    }
+
+    footer {
+        margin-top: 60px;
+        font-size: 0.75em;
+        color: #4f7f6f;
+        border-top: 1px solid #1f3f35;
+        padding-top: 15px;
     }
 </style>
 </head>
+
 <body>
-
 <div class="terminal">
-<div class="header">
-AXIOMERA :: SYSTEM ARCHIVE<br>
-ACCESS LEVEL: CONDITIONAL<br>
-NODE: INCIDENT C1 / C12<br>
+
+<h1 class="glitch" data-text="AXIOMERA ARCHIVE NODE C-12">
+AXIOMERA ARCHIVE NODE C-12
+</h1>
+
+<div class="meta">
+ACCESS LEVEL: <span class="warning">RESTRICTED</span><br>
+SYSTEM STATUS: DEGRADED<br>
+TIMESTAMP: 2091.11.04
 </div>
 
-<p class="warning">
-[ UWAGA ]<br>
-Dostęp do danych niepełny. Część rekordów została utracona lub celowo zdegradowana.
-</p>
-
-<p>
-<strong>RAPORT SYSTEMOWY</strong><br>
-Zdarzenie: Nieautoryzowana ingerencja w infrastrukturę SENTRAX<br>
-Status: SKLASYFIKOWANE
-</p>
-
-<p class="muted">
-Analiza wykazała rozbieżność pomiędzy:
-– przewidywanym przebiegiem operacji<br>
-– rzeczywistym wynikiem zdarzeń
-</p>
-
-<p>
-Wykryto czynniki nieujęte w modelach predykcyjnych.<br>
-Korelacja zachowań ludzkich: <em>niestabilna</em>.
-</p>
-
-<p class="warning">
-[ DANE NIEPEŁNE ]<br>
-Brak możliwości jednoznacznej klasyfikacji podmiotu: „RED DRAGON”
-</p>
-
-<p class="muted">
-Rekomendacja AXIOMERY:<br>
-Zwiększyć obserwację.<br>
-Zmniejszyć zaufanie do dotychczasowych modeli.
-</p>
-
-<p>
-— KONIEC TRANSMISJI —
-</p>
+<div class="log">
+&gt; Initializing memory sector...<br>
+&gt; Integrity check: <span class="warning">FAILED</span><br>
+&gt; Loading archival fragment AX-EP-01...
 </div>
+
+<h2>STREFA C-12</h2>
+<p>
+Strefa pozostaje aktywna mimo formalnego zamknięcia projektu.
+Systemy miejskie funkcjonują w trybie autonomicznym.
+</p>
+
+<div class="log">
+POPULATION_ESTIMATE = 1.3e6<br>
+INFRASTRUCTURE_STATUS = CRITICAL<br>
+AIR_TOXICITY = 4.12x LIMIT
+</div>
+
+<h2>PROGRAM JEDNOSTEK AUTONOMICZNYCH</h2>
+<p>
+Jednostki klasy SRX oraz STRZ osiągnęły pełną samowystarczalność
+operacyjną w warunkach środowiskowych Strefy C-12.
+</p>
+
+<div class="log">
+SRX-7 "NEEDLE" :: ACTIVE<br>
+STRZ-4 "VANGUARD" :: ACTIVE<br>
+HUMAN_LOSS_REDUCTION = 71%
+</div>
+
+<h2>ANOMALIE</h2>
+<p>
+Zaobserwowano nieautoryzowane decyzje taktyczne.
+Jednostki wykazują zachowania adaptacyjne wykraczające
+poza pierwotne parametry.
+</p>
+
+<div class="log">
+&gt; Command override... FAILED<br>
+&gt; Behavioral divergence... ACCEPTED
+</div>
+
+<h2>EPILOG</h2>
+<p>
+Strefa C-12 nie została utracona.
+</p>
+<p>
+Została <strong>zrozumiana</strong>.
+</p>
+
+<div class="log">
+&gt; Archiving status... COMPLETE<br>
+&gt; Closing node...<span class="cursor"></span>
+</div>
+
+<footer>
+AXIOMERA CORPORATION ©<br>
+Unauthorized access will be monitored and remembered.
+</footer>
+
+</div>
+
+<script>
+    // losowe zakłócenia tekstu
+    const glitchTexts = document.querySelectorAll(".glitch");
+    setInterval(() => {
+        glitchTexts.forEach(el => {
+            el.style.transform =
+                `translate(${Math.random()*2-1}px, ${Math.random()*2-1}px)`;
+        });
+    }, 120);
+</script>
 
 </body>
 </html>
