@@ -1,38 +1,151 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>SRX-7 :: NEEDLE</title>
-  <link rel="stylesheet" href="../../database/system.css">
+<meta charset="UTF-8">
+<title>SRX-K9 :: PIES</title>
+
+<style>
+body {
+  background:#000;
+  color:#3d7cff;
+  font-family:"Courier New", monospace;
+  margin:0;
+  padding:40px;
+}
+
+a {
+  color:#3d7cff;
+  text-decoration:none;
+}
+
+a:hover { text-decoration:underline; }
+
+.header {
+  border-bottom:1px solid #3d7cff;
+  padding-bottom:14px;
+  margin-bottom:28px;
+}
+
+.section { margin-bottom:26px; }
+
+.label { color:#6fa3ff; }
+
+.redacted {
+  color:#132447;
+}
+
+.alert {
+  color:#7fb0ff;
+  animation:flicker 1.4s infinite;
+}
+
+@keyframes flicker {
+  0% {opacity:1}
+  45% {opacity:.6}
+  55% {opacity:.25}
+  65% {opacity:.8}
+  100% {opacity:1}
+}
+
+img {
+  max-width:100%;
+  border:none;
+  margin:18px 0;
+  filter:contrast(1.1);
+}
+
+.footer {
+  border-top:1px solid #3d7cff;
+  padding-top:14px;
+  margin-top:40px;
+  font-size:12px;
+}
+</style>
 </head>
+
 <body>
 
-<pre class="terminal">
-UNIT ID: SRX-7 "NEEDLE"
-CLASS: TACTICAL RECON
-STATUS: CONFIRMED
-
-PRIMARY ROLE:
-- Recon / Precision Intervention
-
-SYSTEMS:
-- Neuro-paralytic Needles
-- Micro EMP
-- Credential Sniffing (CoreCred / Calyx)
-
-DATA NOTES:
-[ 일부 데이터 손상 ]
-[ ACCESS LEVEL 3 REQUIRED ]
-
-STREET NAMES:
-- "Komary"
-- "Szpilki"
-
-----------------------------------
-FILE END :: PARTIAL READ
+<div class="header">
+<pre>
+[ SENTRAX UNIT DATABASE ]
+UNIT_ID: SRX-K9
+DESIGNATION: "PIES"
+CLASS: TACTICAL RECON / AREA CONTROL
+ACCESS LEVEL: TIER-3
 </pre>
+</div>
 
-<a href="../../database/index.html">← RETURN TO DATABASE</a>
+<div class="section">
+<span class="label">STATUS:</span> ACTIVE<br>
+<span class="label">SERIAL:</span> 624-012-206-X<br>
+<span class="label">REVISION:</span> RZJ-42x v4<br>
+<span class="label">SERVICE CYCLE:</span> 48h
+</div>
+
+<div class="section">
+<span class="label">PRIMARY ROLE:</span><br>
+– patrol & zone dominance<br>
+– crowd pressure operations<br>
+– pursuit of marked targets
+</div>
+
+<div class="section">
+<span class="label">MOBILITY PLATFORM:</span><br>
+– quadruped combat chassis<br>
+– reinforced titanium–steel armor<br>
+– adaptive terrain stabilization
+</div>
+
+<div class="section">
+<span class="label">SENSOR ARRAY:</span><br>
+– optical sensors (front / rear)<br>
+– motion & vibration tracking<br>
+– acoustic localization<br>
+– biometric silhouette recognition
+</div>
+
+<div class="section">
+<span class="label">ARMAMENT (CONFIGURABLE):</span><br>
+– smoke / EMP grenades<br>
+– non-lethal suppression modules<br>
+– optional kinetic injectors <span class="redacted">[REDACTED]</span>
+</div>
+
+<div class="section">
+<span class="label">CONTROL LOGIC:</span><br>
+– semi-autonomous behavior core<br>
+– pack coordination enabled<br>
+– handler override: <span class="redacted">LOCKED</span>
+</div>
+
+<div class="section alert">
+<span class="label">BEHAVIOR NOTE:</span><br>
+UNIT DISPLAYS AGGRESSIVE TARGET FIXATION<br>
+DE-ESCALATION DELAY RECORDED
+</div>
+
+<div class="section">
+<span class="label">FIELD SCHEMA:</span><br>
+<img src="srx-k9-schema.png" alt="SRX-K9 tactical schematic">
+</div>
+
+<div class="section">
+<span class="label">STREET DESIGNATIONS:</span><br>
+– "Psy Nexarum"<br>
+– "Smycze"<br>
+– "Zęby Systemu"
+</div>
+
+<div class="section alert">
+<span class="label">DATA INTEGRITY:</span><br>
+FILE PARTIALLY CORRUPTED<br>
+SOME MODULE RECORDS UNAVAILABLE
+</div>
+
+<div class="footer">
+<a href="../../index.html">← RETURN TO DATABASE TERMINAL</a><br><br>
+AXIOMERA INTERNAL ARCHIVE // UNAUTHORIZED ACCESS PUNISHABLE
+</div>
 
 </body>
 </html>
