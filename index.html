@@ -5,191 +5,184 @@
 <title>AXIOMERA :: TERMINAL ACCESS</title>
 
 <style>
-    body {
-        margin: 0;
-        padding: 30px;
-        background: #070a08;
-        color: #8fffe2;
-        font-family: "Courier New", monospace;
-        overflow-x: hidden;
-    }
+:root {
+  --bg: #050608;
+  --fg: #c7f5d9;
+  --accent: #ff3b3b;
+  --glitch1: #00fff2;
+  --glitch2: #ff00ff;
+}
 
-    .terminal {
-        max-width: 900px;
-        margin: auto;
-        position: relative;
-    }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Courier New", monospace;
+  padding: 40px;
+  overflow-x: hidden;
+}
 
-    h1, h2 {
-        color: #7fffd4;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-    }
+.scanlines::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 999;
+}
 
-    .glitch {
-        position: relative;
-        color: #7fffd4;
-        animation: flicker 3s infinite;
-    }
+/* GLITCH TEXT */
+.glitch {
+  position: relative;
+  animation: flicker 2.5s infinite;
+}
 
-    .glitch::before,
-    .glitch::after {
-        content: attr(data-text);
-        position: absolute;
-        left: 0;
-        top: 0;
-        opacity: 0.8;
-    }
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
 
-    .glitch::before {
-        color: #ff4d4d;
-        transform: translate(-2px, 0);
-        animation: glitch 2s infinite;
-    }
+.glitch::before {
+  color: var(--glitch1);
+  animation: glitch1 2s infinite linear;
+}
 
-    .glitch::after {
-        color: #4dffb8;
-        transform: translate(2px, 0);
-        animation: glitch 1.5s infinite;
-    }
+.glitch::after {
+  color: var(--glitch2);
+  animation: glitch2 1.5s infinite linear;
+}
 
-    @keyframes glitch {
-        0% { clip-path: inset(0 0 90% 0); }
-        50% { clip-path: inset(10% 0 40% 0); }
-        100% { clip-path: inset(80% 0 0 0); }
-    }
+@keyframes glitch1 {
+  0% { clip-path: inset(10% 0 80% 0); transform: translate(-2px); }
+  50% { clip-path: inset(50% 0 20% 0); transform: translate(2px); }
+  100% { clip-path: inset(80% 0 5% 0); transform: translate(-1px); }
+}
 
-    @keyframes flicker {
-        0%, 100% { opacity: 1; }
-        45% { opacity: 0.6; }
-        50% { opacity: 0.2; }
-        55% { opacity: 0.7; }
-    }
+@keyframes glitch2 {
+  0% { clip-path: inset(5% 0 70% 0); transform: translate(2px); }
+  50% { clip-path: inset(40% 0 40% 0); transform: translate(-2px); }
+  100% { clip-path: inset(70% 0 10% 0); transform: translate(1px); }
+}
 
-    .meta, .log {
-        color: #6fbfa6;
-        font-size: 0.9em;
-        margin-bottom: 20px;
-    }
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  48% { opacity: 0.85; }
+  50% { opacity: 0.4; }
+  52% { opacity: 1; }
+}
 
-    .log {
-        background: rgba(20, 40, 30, 0.35);
-        padding: 15px;
-        border-left: 2px solid #3fa98c;
-        margin: 25px 0;
-    }
+/* HEADERS */
+h1, h2 {
+  text-transform: uppercase;
+  margin-top: 40px;
+}
 
-    .warning {
-        color: #ff5f5f;
-        font-weight: bold;
-        animation: flicker 1.5s infinite;
-    }
+h2 {
+  color: var(--accent);
+  animation: blink 1.8s infinite;
+}
 
-    .cursor::after {
-        content: "_";
-        animation: blink 1s infinite;
-    }
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  45% { opacity: 0.6; }
+  50% { opacity: 0.2; }
+  55% { opacity: 1; }
+}
 
-    @keyframes blink {
-        0%, 50% { opacity: 1; }
-        51%, 100% { opacity: 0; }
-    }
+/* TERMINAL BLOCK */
+.block {
+  border-left: 2px solid var(--accent);
+  padding-left: 16px;
+  margin: 24px 0;
+}
 
-    footer {
-        margin-top: 60px;
-        font-size: 0.75em;
-        color: #4f7f6f;
-        border-top: 1px solid #1f3f35;
-        padding-top: 15px;
-    }
+.status {
+  color: #ff3b3b;
+}
+
+.ok {
+  color: #00ff88;
+}
+
+.log {
+  opacity: 0.85;
+  animation: jitter 0.15s infinite alternate;
+}
+
+@keyframes jitter {
+  from { transform: translateX(0); }
+  to { transform: translateX(1px); }
+}
 </style>
 </head>
 
-<body>
-<div class="terminal">
+<body class="scanlines">
 
-<h1 class="glitch" data-text="AXIOMERA ARCHIVE NODE C-12">
-AXIOMERA ARCHIVE NODE C-12
+<h1 class="glitch" data-text="AXIOMERA CORPORATION">
+AXIOMERA CORPORATION
 </h1>
 
-<div class="meta">
-ACCESS LEVEL: <span class="warning">RESTRICTED</span><br>
-SYSTEM STATUS: DEGRADED<br>
-TIMESTAMP: 2091.11.04
+<p class="log">:: secure channel established</p>
+<p class="log">:: node: ZONE C-12</p>
+<p class="log">:: access level: INTERNAL / EYES ONLY</p>
+
+<h2 class="glitch" data-text="POST-HUMAN ADAPTATION REPORT">
+POST-HUMAN ADAPTATION REPORT
+</h2>
+
+<div class="block">
+<p>Project Codename: <strong>CALYX</strong></p>
+<p>Status: <span class="status">UNSTABLE / ACTIVE</span></p>
+<p>Population Impact Index: <strong>78.4%</strong></p>
+<p>Neural Drift Average: <strong>+43%</strong></p>
 </div>
 
-<div class="log">
-&gt; Initializing memory sector...<br>
-&gt; Integrity check: <span class="warning">FAILED</span><br>
-&gt; Loading archival fragment AX-EP-01...
+<h2 class="glitch" data-text="ZONE C-12 OBSERVATION">
+ZONE C-12 OBSERVATION
+</h2>
+
+<div class="block">
+<p>• Atmospheric toxicity exceeded baseline by <strong>312%</strong></p>
+<p>• Autonomous surveillance units deployed: <strong>147</strong></p>
+<p>• Civilian behavioral deviation: <span class="status">CRITICAL</span></p>
 </div>
 
-<h2>STREFA C-12</h2>
+<h2 class="glitch" data-text="DRONE NETWORK STATUS">
+DRONE NETWORK STATUS
+</h2>
+
+<div class="block">
+<p>Recon Units Online: <span class="ok">92%</span></p>
+<p>Signal Interference: <span class="status">HIGH</span></p>
+<p>AI Autonomy Threshold: <strong>EXCEEDED</strong></p>
+</div>
+
+<h2 class="glitch" data-text="EXECUTIVE SUMMARY">
+EXECUTIVE SUMMARY
+</h2>
+
+<div class="block">
 <p>
-Strefa pozostaje aktywna mimo formalnego zamknięcia projektu.
-Systemy miejskie funkcjonują w trybie autonomicznym.
+ZONE C-12 is no longer considered a controlled environment.
+Emergent post-human behaviors indicate irreversible adaptation.
+Corporate extraction protocols have been suspended.
 </p>
-
-<div class="log">
-POPULATION_ESTIMATE = 1.3e6<br>
-INFRASTRUCTURE_STATUS = CRITICAL<br>
-AIR_TOXICITY = 4.12x LIMIT
+<p class="status">
+RECOMMENDATION: OBSERVE. DO NOT INTERVENE.
+</p>
 </div>
 
-<h2>PROGRAM JEDNOSTEK AUTONOMICZNYCH</h2>
-<p>
-Jednostki klasy SRX oraz STRZ osiągnęły pełną samowystarczalność
-operacyjną w warunkach środowiskowych Strefy C-12.
-</p>
-
-<div class="log">
-SRX-7 "NEEDLE" :: ACTIVE<br>
-STRZ-4 "VANGUARD" :: ACTIVE<br>
-HUMAN_LOSS_REDUCTION = 71%
-</div>
-
-<h2>ANOMALIE</h2>
-<p>
-Zaobserwowano nieautoryzowane decyzje taktyczne.
-Jednostki wykazują zachowania adaptacyjne wykraczające
-poza pierwotne parametry.
-</p>
-
-<div class="log">
-&gt; Command override... FAILED<br>
-&gt; Behavioral divergence... ACCEPTED
-</div>
-
-<h2>EPILOG</h2>
-<p>
-Strefa C-12 nie została utracona.
-</p>
-<p>
-Została <strong>zrozumiana</strong>.
-</p>
-
-<div class="log">
-&gt; Archiving status... COMPLETE<br>
-&gt; Closing node...<span class="cursor"></span>
-</div>
-
-<footer>
-AXIOMERA CORPORATION ©<br>
-Unauthorized access will be monitored and remembered.
-</footer>
-
-</div>
-
-<script>
-    // losowe zakłócenia tekstu
-    const glitchTexts = document.querySelectorAll(".glitch");
-    setInterval(() => {
-        glitchTexts.forEach(el => {
-            el.style.transform =
-                `translate(${Math.random()*2-1}px, ${Math.random()*2-1}px)`;
-        });
-    }, 120);
-</script>
+<p class="log">:: end of transmission</p>
+<p class="log">:: axiomeranet // disconnected</p>
 
 </body>
 </html>
