@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>SRX-12 :: REAPER</title>
+
+<style>
+body {
+  background:#000;
+  color:#3d7cff;
+  font-family:"Courier New", monospace;
+  margin:0;
+  padding:40px;
+}
+
+a { color:#3d7cff; text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+.header {
+  border-bottom:1px solid #3d7cff;
+  padding-bottom:14px;
+  margin-bottom:30px;
+}
+
+.section { margin-bottom:26px; }
+
+.label { color:#6fa3ff; }
+
+.locked {
+  color:#0a1633;
+  background:#000;
+  padding:8px;
+  border:1px dashed #132447;
+  margin-top:6px;
+}
+
+.alert {
+  color:#7fb0ff;
+  animation:flicker 1.4s infinite;
+}
+
+@keyframes flicker {
+  0% {opacity:1}
+  45% {opacity:.5}
+  60% {opacity:.2}
+  75% {opacity:.8}
+  100% {opacity:1}
+}
+
+.warning {
+  border:1px solid #3d7cff;
+  padding:14px;
+  margin-top:30px;
+  background:#02060f;
+}
+
+.footer {
+  border-top:1px solid #3d7cff;
+  padding-top:14px;
+  margin-top:40px;
+  font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<pre>
+[ SENTRAX UNIT DATABASE ]
+UNIT_ID: SRX-12
+DESIGNATION: "REAPER"
+CLASS: HEAVY EXECUTION DRONE
+ACCESS LEVEL: TIER-7 REQUIRED
+</pre>
+</div>
+
+<div class="section alert">
+<span class="label">STATUS:</span> ACTIVE<br>
+<span class="label">DEPLOYMENT AUTHORITY:</span> CENTRAL ONLY
+</div>
+
+<div class="section">
+<span class="label">PRIMARY FUNCTION:</span>
+<div class="locked">
+ACCESS DENIED<br>
+CLEARANCE INSUFFICIENT
+</div>
+</div>
+
+<div class="section">
+<span class="label">COMBAT SYSTEMS:</span>
+<div class="locked">
+DATA BLOCKED BY AXIOMERA SECURITY PROTOCOL<br>
+REASON: MASS-CASUALTY POTENTIAL
+</div>
+</div>
+
+<div class="section">
+<span class="label">ARMOR / FRAME:</span>
+<div class="locked">
+MATERIAL COMPOSITION CLASSIFIED<br>
+STRUCTURAL DATA OBFUSCATED
+</div>
+</div>
+
+<div class="section">
+<span class="label">AUTONOMY LEVEL:</span>
+<div class="locked">
+EDGE-AI ARCHITECTURE<br>
+DECISION TREES — SEALED
+</div>
+</div>
+
+<div class="section">
+<span class="label">OPERATIONAL NOTES:</span>
+<div class="locked">
+RECORDS FRAGMENTED<br>
+MULTIPLE LOGS MARKED AS [NON-RECOVERABLE]
+</div>
+</div>
+
+<div class="section warning alert">
+WARNING:<br>
+SRX-12 UNITS ARE NOT DEPLOYED FOR CONTROL<br>
+THEY ARE DEPLOYED FOR TERMINATION
+</div>
+
+<div class="section">
+<span class="label">STREET DESIGNATIONS:</span><br>
+– "Kosiarze"<br>
+– "Żniwiarze"<br>
+– "Cisza po alarmie"
+</div>
+
+<div class="section alert">
+<span class="label">DATA INTEGRITY:</span><br>
+FILE STRUCTURE DAMAGED<br>
+POSSIBLE DELIBERATE PURGE
+</div>
+
+<div class="footer">
+<a href="../../index.html">← RETURN TO DATABASE TERMINAL</a><br><br>
+AXIOMERA BLACK ARCHIVE // ACCESS LOGGED
+</div>
+
+</body>
+</html>
