@@ -2,187 +2,235 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>AXIOMERA :: TERMINAL ACCESS</title>
+<title>AXIOMERA :: RAPORT KOREKCYJNY</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-:root {
-  --bg: #050608;
-  --fg: #c7f5d9;
-  --accent: #ff3b3b;
-  --glitch1: #00fff2;
-  --glitch2: #ff00ff;
-}
-
+/* ===== RESET ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  background: var(--bg);
-  color: var(--fg);
+  background: #000;
+  color: #4fc3ff;
   font-family: "Courier New", monospace;
-  padding: 40px;
+  line-height: 1.6;
   overflow-x: hidden;
 }
 
-.scanlines::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.03),
-    rgba(255,255,255,0.03) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  pointer-events: none;
-  z-index: 999;
-}
-
-/* GLITCH TEXT */
-.glitch {
-  position: relative;
-  animation: flicker 2.5s infinite;
-}
-
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-}
-
-.glitch::before {
-  color: var(--glitch1);
-  animation: glitch1 2s infinite linear;
-}
-
-.glitch::after {
-  color: var(--glitch2);
-  animation: glitch2 1.5s infinite linear;
-}
-
-@keyframes glitch1 {
-  0% { clip-path: inset(10% 0 80% 0); transform: translate(-2px); }
-  50% { clip-path: inset(50% 0 20% 0); transform: translate(2px); }
-  100% { clip-path: inset(80% 0 5% 0); transform: translate(-1px); }
-}
-
-@keyframes glitch2 {
-  0% { clip-path: inset(5% 0 70% 0); transform: translate(2px); }
-  50% { clip-path: inset(40% 0 40% 0); transform: translate(-2px); }
-  100% { clip-path: inset(70% 0 10% 0); transform: translate(1px); }
+/* ===== GLITCH KEYFRAMES ===== */
+@keyframes glitch {
+  0% { text-shadow: 2px 0 #00f6ff, -2px 0 #0033ff; }
+  20% { text-shadow: -2px 0 #00f6ff, 2px 0 #0033ff; }
+  40% { text-shadow: 2px 0 #0033ff, -2px 0 #00f6ff; }
+  60% { text-shadow: -1px 0 #00f6ff, 1px 0 #0033ff; }
+  80% { text-shadow: 1px 0 #00f6ff, -1px 0 #0033ff; }
+  100% { text-shadow: 0 0 #000; }
 }
 
 @keyframes flicker {
   0%, 100% { opacity: 1; }
-  48% { opacity: 0.85; }
-  50% { opacity: 0.4; }
-  52% { opacity: 1; }
+  50% { opacity: 0.85; }
+  52% { opacity: 0.4; }
+  54% { opacity: 1; }
 }
 
-/* HEADERS */
+/* ===== LAYOUT ===== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+/* ===== LOGO ===== */
+.logo {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.logo img {
+  max-width: 260px;
+  margin: 10px;
+}
+
+.logo-symbol {
+  animation: flicker 4s infinite;
+}
+
+.logo-text {
+  animation: glitch 2.5s infinite;
+}
+
+/* ===== HEADERS ===== */
 h1, h2 {
-  text-transform: uppercase;
-  margin-top: 40px;
+  margin: 40px 0 15px;
+  animation: glitch 3s infinite;
+}
+
+h1 {
+  font-size: 28px;
+  text-align: center;
 }
 
 h2 {
-  color: var(--accent);
-  animation: blink 1.8s infinite;
+  font-size: 20px;
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  45% { opacity: 0.6; }
-  50% { opacity: 0.2; }
-  55% { opacity: 1; }
-}
-
-/* TERMINAL BLOCK */
+/* ===== TERMINAL BLOCKS ===== */
 .block {
-  border-left: 2px solid var(--accent);
-  padding-left: 16px;
-  margin: 24px 0;
+  border-left: 2px solid #4fc3ff;
+  padding-left: 15px;
+  margin-bottom: 30px;
+  animation: flicker 6s infinite;
 }
 
-.status {
-  color: #ff3b3b;
+.separator {
+  margin: 25px 0;
+  color: #1fa2ff;
+  opacity: 0.7;
 }
 
-.ok {
-  color: #00ff88;
+/* ===== LISTS ===== */
+ul {
+  list-style: none;
+  margin-left: 15px;
 }
 
-.log {
-  opacity: 0.85;
-  animation: jitter 0.15s infinite alternate;
+li::before {
+  content: ">> ";
+  color: #1fa2ff;
 }
 
-@keyframes jitter {
-  from { transform: translateX(0); }
-  to { transform: translateX(1px); }
+/* ===== FOOTER ===== */
+.footer {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.6;
+  animation: flicker 5s infinite;
+}
+
+/* ===== NOISE OVERLAY ===== */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,0.02),
+    rgba(255,255,255,0.02) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  mix-blend-mode: overlay;
 }
 </style>
 </head>
 
-<body class="scanlines">
+<body>
+<div class="container">
 
-<h1 class="glitch" data-text="AXIOMERA CORPORATION">
-AXIOMERA CORPORATION
-</h1>
+  <!-- LOGO -->
+  <div class="logo">
+    <img src="axiomera-symbol.png" class="logo-symbol" alt="AXIOMERA SYMBOL">
+    <br>
+    <img src="axiomera-text.png" class="logo-text" alt="AXIOMERA">
+  </div>
 
-<p class="log">:: secure channel established</p>
-<p class="log">:: node: ZONE C-12</p>
-<p class="log">:: access level: INTERNAL / EYES ONLY</p>
+  <h1>/// AXIOMERA — RAPORT KOREKCYJNY ///</h1>
 
-<h2 class="glitch" data-text="POST-HUMAN ADAPTATION REPORT">
-POST-HUMAN ADAPTATION REPORT
-</h2>
+  <div class="block">
+    Jednostka nadrzędna: <strong>AXIOMERA</strong><br>
+    Właściciel infrastruktury: <strong>NEXARUM</strong><br>
+    Podsystem wykonawczy: <strong>SENTRAX</strong><br>
+    Zakres analizy: <strong>Zdarzenie anomalne / Strefa C1</strong><br>
+    Znacznik czasu: <strong>03:17:42 – 03:17:44</strong>
+  </div>
 
-<div class="block">
-<p>Project Codename: <strong>CALYX</strong></p>
-<p>Status: <span class="status">UNSTABLE / ACTIVE</span></p>
-<p>Population Impact Index: <strong>78.4%</strong></p>
-<p>Neural Drift Average: <strong>+43%</strong></p>
+  <div class="separator">/// PROTOKÓŁ ANALITYCZNY ⸻ AKTYWNY ///</div>
+
+  <h2>1. STRESZCZENIE ZDARZENIA</h2>
+  <div class="block">
+    W strefie C1 odnotowano nieautoryzowane przejęcie rdzenia kalibracyjnego klasy K-Σ/7.<br>
+    Jednostki SENTRAX wdrożyły protokół supresji poziomu czwartego.<br><br>
+    <strong>Status protokołu:</strong> zakończony częściowym niepowodzeniem.
+  </div>
+
+  <h2>2. STRATY SYSTEMOWE</h2>
+  <div class="block">
+    <ul>
+      <li>Zniszczone platformy egzekucyjne: 3</li>
+      <li>Jednostki supresyjne RZ-X („Rzęch”): 5</li>
+      <li>Luka czasowa: 2,3 sekundy</li>
+      <li>Brak zapisu wizualnego / termicznego / EM</li>
+      <li>Status rdzenia K-Σ/7: <strong>UTRACONY</strong></li>
+    </ul>
+  </div>
+
+  <h2>3. ANALIZA ANOMALII</h2>
+  <div class="block">
+    Brak rejestracji emisji energii kinetycznej.<br>
+    Brak sygnałów zakłócających.<br>
+    Brak wzorców bojowych zgodnych z bazą danych.<br><br>
+    Zdarzenie nie spełnia kryteriów ataku terrorystycznego ani sabotażu korporacyjnego.<br><br>
+    <strong>Klasyfikacja:</strong><br>
+    Anomalia niskiej przewidywalności /// źródło nieznane
+  </div>
+
+  <h2>4. PODMIOT LUDZKI: JAREK [ID ZDEGRADOWANY]</h2>
+  <div class="block">
+    Status przed zdarzeniem:
+    <ul>
+      <li>Zasób roboczy klasy C</li>
+      <li>Dostęp cofnięty</li>
+      <li>CoreCred: zablokowany</li>
+    </ul>
+    <br>
+    Status po zdarzeniu:
+    <ul>
+      <li>Lokalizacja: nieznana</li>
+      <li>Stan biologiczny: niepotwierdzony</li>
+      <li>Wartość predykcyjna: +14,6%</li>
+    </ul>
+  </div>
+
+  <h2>5. REKOMENDACJE SYSTEMOWE</h2>
+  <div class="block">
+    <ul>
+      <li>Zwiększyć nadzór nad strefami C-serii</li>
+      <li>Przeklasyfikować podmioty infrastrukturalne</li>
+      <li>Rozszerzyć modele predykcyjne o zmienną X-Δ</li>
+    </ul>
+  </div>
+
+  <h2>6. UWAGA KOŃCOWA</h2>
+  <div class="block">
+    Modele predykcyjne wykazują rosnącą liczbę zdarzeń<br>
+    bez racjonalnego ciągu przyczynowo-skutkowego.<br><br>
+    <strong>Status:</strong> brak zagrożenia krytycznego.<br>
+    <em>Na tym etapie.</em>
+  </div>
+
+  <div class="separator">/// RAPORT ZAMKNIĘTY ⸻ CIĄGŁOŚĆ ZAPEWNIONA ///</div>
+
+  <div class="footer">
+    AXIOMERA © TOM I — EPILOG<br>
+    SYSTEM ONLINE // PROTOCOL STABLE
+  </div>
+
 </div>
 
-<h2 class="glitch" data-text="ZONE C-12 OBSERVATION">
-ZONE C-12 OBSERVATION
-</h2>
-
-<div class="block">
-<p>• Atmospheric toxicity exceeded baseline by <strong>312%</strong></p>
-<p>• Autonomous surveillance units deployed: <strong>147</strong></p>
-<p>• Civilian behavioral deviation: <span class="status">CRITICAL</span></p>
-</div>
-
-<h2 class="glitch" data-text="DRONE NETWORK STATUS">
-DRONE NETWORK STATUS
-</h2>
-
-<div class="block">
-<p>Recon Units Online: <span class="ok">92%</span></p>
-<p>Signal Interference: <span class="status">HIGH</span></p>
-<p>AI Autonomy Threshold: <strong>EXCEEDED</strong></p>
-</div>
-
-<h2 class="glitch" data-text="EXECUTIVE SUMMARY">
-EXECUTIVE SUMMARY
-</h2>
-
-<div class="block">
-<p>
-ZONE C-12 is no longer considered a controlled environment.
-Emergent post-human behaviors indicate irreversible adaptation.
-Corporate extraction protocols have been suspended.
-</p>
-<p class="status">
-RECOMMENDATION: OBSERVE. DO NOT INTERVENE.
-</p>
-</div>
-
-<p class="log">:: end of transmission</p>
-<p class="log">:: axiomeranet // disconnected</p>
+<script>
+/* RANDOM GLITCH FLICKER */
+setInterval(() => {
+  const headers = document.querySelectorAll('h1, h2');
+  headers.forEach(h => {
+    if (Math.random() > 0.7) {
+      h.style.opacity = Math.random() * 0.5 + 0.5;
+      setTimeout(() => h.style.opacity = 1, 120);
+    }
+  });
+}, 300);
+</script>
 
 </body>
 </html>
